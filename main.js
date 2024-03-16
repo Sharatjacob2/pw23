@@ -6,12 +6,10 @@ const circle4 = document.querySelector('.decorstuff');
 let circleTop = 0; // Initial top position, centered vertically
 circle4.style.offsetDistance = circleTop + '%';
 
-
-async function circleontop() {
-  while (circleTop != 100) {
-    circleTop += 0.5;
-    await delay(200);
-  }
+let direction = 1;
+async function circleontop(direction) {
+  circleTop += direction * 0.5;
+  await delay(100);
 }
 // Event listener for mouse wheel scroll
 window.addEventListener('wheel', (event) => {
@@ -20,17 +18,19 @@ window.addEventListener('wheel', (event) => {
 
   // Move the circle based on the scroll direction
   if (scrollAmount > 0) {
-    // circleTop += 0.5;
+    direction = 1;
     circle1.style.transform = 'rotate(-60deg) translateX(10px) translateY(450px) ';
     circle2.style.transform = 'rotate(-60deg) translateX(310px) translateY(500px) ';
     circle3.style.transform = 'rotate(-60deg) translateX(560px) translateY(550px) ';
-    circleontop();
+    circleontop(direction);
     // circle4.style.offsetDistance = '100%';
   } else {
+    direction = -1;
     circle1.style.transform = 'rotate(60deg) translateX(-250px) translateY(-250px) ';
     circle2.style.transform = 'rotate(60deg) translateX(-250px) translateY(-250px) ';
     circle3.style.transform = 'rotate(60deg) translateX(-250px) translateY(-250px) ';
     circle4.style.offsetDistance = '0%';
+    circleontop(direction);
     // circleTop -= 0.5;
   }
 
