@@ -214,6 +214,7 @@ p {
     position: absolute;
     offset-path: path("M5 57.4604C197.896 174.021 422.261 175.218 671.564 79.5119C943.161 -24.7534 1073.47 -25.5871 1265.26 79.5119");
     offset-distance: 0%;
+    transition: transform 3s ease-out;
 
 }
 
